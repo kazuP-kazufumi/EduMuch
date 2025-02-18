@@ -75,4 +75,4 @@ P2Pマッチングの仕組み：学生と投資家が直接交渉できるた�
 ・テスト→デプロイの自動化:GitHub ActionsでCI/CD
 ・SPA化したアプリのサーバサイド処理として：Go言語
 
-### 画面遷移図URL：https://www.figma.com/design/6UniA3RT5hVxYcEmARGgRt/Edumuch?node-id=0-1&p=f&t=zFVXGIKMkrWiqbk2-0
+### 画面遷移図URL：https://gyazo.com/fe6f94ba144aed8b2263516b260cdc7b
