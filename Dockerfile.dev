@@ -1,0 +1,17 @@
+# 開発用の Ruby イメージ
+FROM ruby:3.2
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# 必要なパッケージをインストール
+RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client
+
+# ソースコードをコピー
+COPY . .
+
+# 依存関係をインストール（開発環境向け）
+RUN bundle install
+
+# コンテナ起動時に Rails サーバーを起動
+CMD ["rails", "server", "-b", "0.0.0.0"]

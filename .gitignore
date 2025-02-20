@@ -1,0 +1,14 @@
+# Docker 関連
+
+docker-compose.override.yml
+
+# ログ・キャッシュ関連
+log/*
+tmp/*
+node_modules/
+
+# バンドル済み Gem
+vendor/bundle
+
+# 環境変数
+.env
