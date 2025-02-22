@@ -5,13 +5,11 @@ FROM ruby:3.2
 WORKDIR /app
 
 # 必要なパッケージをインストール
-RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client
+RUN apt-get update -qq && \
+    apt-get install -y nodejs yarn postgresql-client
 
-# ソースコードをコピー
-COPY . .
+# Rails の新規プロジェクト作成に必要な gem をインストール
+RUN gem install rails
 
-# 依存関係をインストール（開発環境向け）
-RUN bundle install
-
-# コンテナ起動時に Rails サーバーを起動
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# コンテナ起動時にシェルを起動（rails new を実行できるようにする）
+CMD ["/bin/bash"]
