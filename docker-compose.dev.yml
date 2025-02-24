@@ -16,6 +16,7 @@ services:
     environment:
       RAILS_ENV: development
       DATABASE_URL: postgres://postgres:password@db:5432/myapp_development
+    working_dir: /app
 
   db:
     image: postgres:15
