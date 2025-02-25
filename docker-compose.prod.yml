@@ -6,7 +6,8 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
-      - web
+      web:
+        condition: service_healthy
 
   web:
     build:
@@ -22,6 +23,11 @@ services:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     depends_on:
       - db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/up"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   db:
     image: postgres:15
