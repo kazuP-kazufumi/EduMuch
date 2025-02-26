@@ -4,9 +4,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    command: bash -c "rm -f tmp/pids/server.pid && bundle install && rails db:create db:migrate && rails server -b 0.0.0.0"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install && bundle exec rails db:create db:migrate && bundle exec rails server -b 0.0.0.0 -p 3000"
     volumes:
       - .:/app
+      - /app/tmp
+      - /app/log
     ports:
       - "3000:3000"
     depends_on:
@@ -16,6 +18,7 @@ services:
     environment:
       RAILS_ENV: development
       DATABASE_URL: postgres://postgres:password@db:5432/myapp_development
+      BINDING: 0.0.0.0
     working_dir: /app
 
   db:
