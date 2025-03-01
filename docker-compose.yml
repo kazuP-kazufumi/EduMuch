@@ -9,7 +9,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ${RAILS_ENV:-development} == development ? .:/app : /app/public
+      - .:/app
+      - /app/tmp
+      - /app/log
     environment:
       RAILS_ENV: ${RAILS_ENV:-development}
       DATABASE_URL: postgres://postgres:${DB_PASSWORD:-password}@db:5432/${DB_NAME:-myapp_development}
